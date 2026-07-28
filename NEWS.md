@@ -1,4 +1,4 @@
-# Version 1.x.y 2026-??-??
+# Version 1.4.7 2026-07-28
 
 * Fixed cmake rules for building with utf8cpp 4.x; fixes #344
 
