@@ -33,4 +33,11 @@ jobs:
         run: cmake --build _build --parallel
 
       - name: Test installation
-        run: cmake --install _build --prefix ${GITHUB_WORKSPACE}/_built
+        run: |
+          cmake --install _build --prefix ${GITHUB_WORKSPACE}/_built
+          cmake -E remove_directory _build
+
+      - name: Check installed version links properly with CMake
+        run: |
+          cmake -S examples -B examples/_build ${{ matrix.lib.option }} -DCMAKE_PREFIX_PATH="${GITHUB_WORKSPACE}/_built"
+          cmake --build examples/_build --parallel
