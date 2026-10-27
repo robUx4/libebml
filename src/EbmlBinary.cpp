@@ -74,7 +74,8 @@ filepos_t EbmlBinary::ReadData(IOCallback & input, ScopeMode ReadFully)
   if (Data == nullptr)
     throw CRTError(std::string("Error allocating data"));
   SetValueIsSet();
-  return input.read(Data, GetSize());
+  input.readFully(Data, GetSize());
+  return GetSize();
 }
 
 bool EbmlBinary::operator==(const EbmlBinary & ElementToCompare) const
